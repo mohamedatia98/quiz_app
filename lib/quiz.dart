@@ -12,6 +12,7 @@ class Quiz extends StatefulWidget {
 }
 
 class _Quiz extends State<Quiz> {
+  // and still we can have ternay expression solution with alinging String activeScreen varible and son s
   Widget? activeScreen;
 
   @override
