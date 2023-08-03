@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/start_screen.dart';
+import 'package:quiz_app/answer_button.dart';
+import 'package:quiz_app/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
@@ -13,28 +15,19 @@ class QuestionsScreen extends StatefulWidget {
 class _Quiz extends State<QuestionsScreen> {
   @override
   Widget build(context) {
+    final currentquestion = questions[0];
+
     return SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('The questions !!'),
-          ElevatedButton(onPressed: () {}, child: const Text('Answer 1')),
-          const SizedBox(
-            height: 40,
-          ),
-          ElevatedButton(onPressed: () {}, child: const Text('Answer 1')),
-          const SizedBox(
-            height: 40,
-          ),
-          ElevatedButton(onPressed: () {}, child: const Text('Answer 1')),
-          const SizedBox(
-            height: 40,
-          ),
-          ElevatedButton(onPressed: () {}, child: const Text('Answer 1')),
-          const SizedBox(
-            height: 40,
-          )
+          Text(currentquestion.text),
+          const SizedBox(height: 25),
+          // this called Spreading and so fast process than hard code !
+          ...currentquestion.answers.map((answer) {
+            return AnswerButton(onTap: () {}, text: answer);
+          }),
         ],
       ),
     );

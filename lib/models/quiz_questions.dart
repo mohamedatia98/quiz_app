@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 
-class QuizQuestion{
+class QuizQuestion {
   const QuizQuestion(this.text, this.answers);
 
-   final String text ;
-   final List<String> answers;
-
+  final String text;
+  final List<String> answers;
 }
