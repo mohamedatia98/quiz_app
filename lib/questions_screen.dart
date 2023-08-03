@@ -19,16 +19,24 @@ class _Quiz extends State<QuestionsScreen> {
 
     return SizedBox(
       width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(currentquestion.text),
-          const SizedBox(height: 25),
-          // this called Spreading and so fast process than hard code !
-          ...currentquestion.answers.map((answer) {
-            return AnswerButton(onTap: () {}, text: answer);
-          }),
-        ],
+      child: Container(
+        margin: const EdgeInsets.all(40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              currentquestion.text,
+              style: const TextStyle(color: Colors.white),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 25),
+            // this called Spreading and so fast process than hard code !
+            ...currentquestion.answers.map((answer) {
+              return AnswerButton(onTap: () {}, text: answer);
+            }),
+          ],
+        ),
       ),
     );
   }
