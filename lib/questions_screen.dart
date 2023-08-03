@@ -32,7 +32,7 @@ class _Quiz extends State<QuestionsScreen> {
             ),
             const SizedBox(height: 25),
             // this called Spreading and so fast process than hard code !
-            ...currentquestion.answers.map((answer) {
+            ...currentquestion.getshuffleList().map((answer) {
               return AnswerButton(onTap: () {}, text: answer);
             }),
           ],
@@ -41,3 +41,5 @@ class _Quiz extends State<QuestionsScreen> {
     );
   }
 }
+
+
