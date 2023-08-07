@@ -13,9 +13,17 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _Quiz extends State<QuestionsScreen> {
+  var currentIndexquestion = 0;
+
+  void answerquetionchange() {
+    setState(() {
+      currentIndexquestion++;
+    });
+  }
+
   @override
   Widget build(context) {
-    final currentquestion = questions[0];
+    final currentquestion = questions[currentIndexquestion];
 
     return SizedBox(
       width: double.infinity,
@@ -33,7 +41,7 @@ class _Quiz extends State<QuestionsScreen> {
             const SizedBox(height: 25),
             // this called Spreading and so fast process than hard code !
             ...currentquestion.getshuffleList().map((answer) {
-              return AnswerButton(onTap: () {}, text: answer);
+              return AnswerButton(onTap: answerquetionchange, text: answer);
             }),
           ],
         ),
@@ -43,3 +51,4 @@ class _Quiz extends State<QuestionsScreen> {
 }
 
 
+// last video is 22
