@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/start_screen.dart';
 import 'package:quiz_app/questions_screen.dart';
 
@@ -12,6 +13,8 @@ class Quiz extends StatefulWidget {
 }
 
 class _Quiz extends State<Quiz> {
+  List<String> selectedAnswers = [];
+
   // and still we can have ternay expression solution with alinging String activeScreen varible and son s
   Widget? activeScreen;
 
@@ -21,9 +24,20 @@ class _Quiz extends State<Quiz> {
     super.initState();
   }
 
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+    if (selectedAnswers.length == questions.length) {
+      // this for not getting error with exceeding number of questions
+      setState(() {
+        selectedAnswers = [];
+        activeScreen = StartScreen(switchscreen);
+      });
+    }
+  }
+
   void switchscreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = QuestionsScreen(onSelectedScreen: chooseAnswer);
     });
   }
 

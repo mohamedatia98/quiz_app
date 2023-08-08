@@ -5,8 +5,9 @@ import 'package:quiz_app/data/questions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key});
+  const QuestionsScreen({super.key, required this.onSelectedScreen});
 
+  final void Function(String answer) onSelectedScreen;
   @override
   State<QuestionsScreen> createState() {
     return _Quiz();
@@ -16,8 +17,12 @@ class QuestionsScreen extends StatefulWidget {
 class _Quiz extends State<QuestionsScreen> {
   var currentIndexquestion = 0;
 
-  void answerquetionchange() {
+  void answerquetionchange(String answer) {
+    widget.onSelectedScreen(
+        answer); // by this way i can get function from majopr class to state class
     setState(() {
+      // if (currentIndexquestion < 5) {
+      //   currentIndexquestion++;}
       currentIndexquestion++;
     });
   }
@@ -45,9 +50,15 @@ class _Quiz extends State<QuestionsScreen> {
             ),
             const SizedBox(height: 25),
             // this called Spreading and so fast process than hard code !
-            ...currentquestion.getshuffleList().map((answer) {
-              return AnswerButton(onTap: answerquetionchange, text: answer);
-            }),
+            ...currentquestion.getshuffleList().map(
+              (answer) {
+                return AnswerButton(
+                    onTap: () {
+                      answerquetionchange(answer);
+                    },
+                    text: answer);
+              },
+            ),
           ],
         ),
       ),
