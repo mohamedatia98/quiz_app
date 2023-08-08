@@ -31,7 +31,9 @@ class _Quiz extends State<Quiz> {
       // this for not getting error with exceeding number of questions
       setState(() {
         selectedAnswers = [];
-        activeScreen = const ResultScreen();
+        activeScreen = ResultScreen(
+          chosenAnswers: selectedAnswers,
+        );
       });
     }
   }
