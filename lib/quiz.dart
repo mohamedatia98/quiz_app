@@ -30,7 +30,7 @@ class _Quiz extends State<Quiz> {
     if (selectedAnswers.length == questions.length) {
       // this for not getting error with exceeding number of questions
       setState(() {
-        selectedAnswers = [];
+        // selectedAnswers = [];
         activeScreen = ResultScreen(
           chosenAnswers: selectedAnswers,
         );
