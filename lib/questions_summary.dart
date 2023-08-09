@@ -12,8 +12,9 @@ class QuestionsSummary extends StatelessWidget {
         (data) {
           return Row(
             children: [
-              // good example for casting at flutter 
+              // good example for casting at flutter
               Text(((data['question_index'] as int) + 1).toString()),
+              // better formatting boundaries.
               Expanded(
                 child: Column(
                   children: [
